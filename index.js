@@ -5,12 +5,14 @@ for (i=0;i< document.querySelectorAll(".drum").length ;i++)
 
         var choice1=this.innerHTML;
         sounding(choice1);
+        check(choice1);
 
     });
 
     document.addEventListener("keypress", function(event)
     {
         sounding(event.key);
+        check(event.key);
     });
 }
 
@@ -57,4 +59,14 @@ function sounding(choice)
             default:
                 break;
         }
+}
+
+function check(event)
+{
+    var temp = document.querySelector("." + event);
+    temp.classList.add("pressed");
+
+    setTimeout(function(){
+        temp.classList.remove("pressed");
+    }, 50);
 }
